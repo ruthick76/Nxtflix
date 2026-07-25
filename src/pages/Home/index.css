@@ -1,0 +1,224 @@
+.home-page {
+  background-color: #141414;
+  color: #ffffff;
+  min-height: 100vh;
+  padding-bottom: 5rem;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 55vh;
+  min-height: 380px;
+  background-image: url("https://picsum.photos/seed/nxtflixhero/1600/900");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 0 4%;
+  box-sizing: border-box;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 20, 20, 0.2) 0%,
+    rgba(20, 20, 20, 0.8) 70%,
+    #141414 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #e5e5e5;
+  margin: 0;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  max-width: 600px;
+}
+
+/* Carousels container */
+.carousels-container {
+  margin-top: -3rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* Grid Section */
+.grid-section {
+  padding: 2rem 4%;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* Filter Chips */
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.chip-btn {
+  background-color: #282828;
+  color: #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.55rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.chip-btn:hover {
+  background-color: #383838;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.chip-btn.active {
+  background-color: #e50914;
+  color: #ffffff;
+  border-color: #e50914;
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.35);
+}
+
+/* Movies Grid */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.75rem;
+}
+
+/* Empty State */
+.empty-grid-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.empty-text {
+  font-size: 1.15rem;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+  .hero-section {
+    height: 45vh;
+    min-height: 300px;
+  }
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 1.25rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 1.8rem;
+    letter-spacing: 0;
+  }
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  .hero-section {
+    height: 40vh;
+    min-height: 260px;
+    padding: 0 5%;
+  }
+  .carousels-container {
+    margin-top: -1.5rem;
+  }
+  .grid-section {
+    padding: 1.5rem 4%;
+  }
+  .section-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .filter-chips {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .chip-btn {
+    padding: 0.42rem 0.9rem;
+    font-size: 0.82rem;
+  }
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .empty-grid-state {
+    padding: 3rem 1rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .chip-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.78rem;
+  }
+}

@@ -1,0 +1,165 @@
+.not-found-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0c0c0c;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background subtle grid/pattern effect */
+.not-found-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(229, 9, 20, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* NXTFLIX brand at the top — like a mini header */
+.not-found-brand {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #e50914;
+  letter-spacing: 3px;
+  margin-bottom: auto;
+  padding-top: 1rem;
+  align-self: flex-start;
+  z-index: 1;
+}
+
+/* Center content box */
+.not-found-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  max-width: 560px;
+  z-index: 1;
+  padding: 2rem 0;
+}
+
+/* Giant 404 number */
+.not-found-code {
+  font-size: 10rem;
+  font-weight: 900;
+  color: #e50914;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -4px;
+  text-shadow:
+    0 0 40px rgba(229, 9, 20, 0.4),
+    0 4px 20px rgba(229, 9, 20, 0.2);
+  animation: floatUp 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Page Not Found heading */
+.not-found-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1.5rem 0 1rem 0;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+/* Supporting description */
+.not-found-description {
+  font-size: 1.05rem;
+  color: #a0a0a0;
+  line-height: 1.7;
+  margin: 0 0 2.5rem 0;
+  max-width: 420px;
+}
+
+/* Back to Home button */
+.home-link {
+  background-color: #e50914;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.85rem 2.2rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(229, 9, 20, 0.45);
+  transition: all 0.3s ease;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.home-link:hover {
+  background-color: #f6121d;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.55);
+}
+
+.home-link:active {
+  transform: translateY(0);
+}
+
+/* Bottom spacing filler */
+.not-found-page::after {
+  content: "";
+  margin-top: auto;
+  display: block;
+  padding-bottom: 1rem;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .not-found-code {
+    font-size: 7rem;
+    letter-spacing: -2px;
+  }
+  .not-found-title {
+    font-size: 1.7rem;
+  }
+  .not-found-description {
+    font-size: 0.95rem;
+  }
+  .not-found-brand {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .not-found-code {
+    font-size: 5.5rem;
+    letter-spacing: -1px;
+  }
+  .not-found-title {
+    font-size: 1.45rem;
+    margin: 1rem 0 0.75rem 0;
+  }
+  .not-found-description {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  .not-found-brand {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+  }
+  .home-link {
+    padding: 0.75rem 1.8rem;
+    font-size: 0.92rem;
+  }
+}

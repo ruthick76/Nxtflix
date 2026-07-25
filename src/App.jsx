@@ -1,60 +1,50 @@
-import { Routes, Route } from "react-router-dom";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
-import Header from "./components/Header/Header.jsx";
-import SignIn from "./pages/SignIn/SignIn.jsx";
-import Home from "./pages/Home/Home.jsx";
-import MovieDetails from "./pages/MovieDetails/MovieDetails.jsx";
-import WatchLater from "./pages/WatchLater/WatchLater.jsx";
-import NotFound from "./pages/NotFound/NotFound.jsx";
+import React from "react";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home/Home";
+import MovieDetails from "./pages/MovieDetails/MovieDetails";
+import WatchLater from "./pages/WatchLater/WatchLater";
+import SignIn from "./pages/SignIn/SignIn";
+import NotFound from "./pages/NotFound/NotFound";
+import { WatchLaterProvider } from "./context/WatchLaterContext";
 
-function AppLayout({ children }) {
+// Layout for pages that need login + the Header navigation bar
+const PrivateLayout = () => {
   return (
-    <>
+    <ProtectedRoute>
       <Header />
-      {children}
-    </>
+      <main>
+        <Outlet />
+      </main>
+    </ProtectedRoute>
   );
-}
+};
 
 function App() {
   return (
-    <Routes>
-      <Route path="/login" element={<SignIn />} />
+    // Wrap everything with WatchLaterProvider so all pages can access the saved list
+    <WatchLaterProvider>
+      <BrowserRouter>
+        <Routes>
 
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute>
-            <AppLayout>
-              <Home />
-            </AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/movies/:id"
-        element={
-          <ProtectedRoute>
-            <AppLayout>
-              <MovieDetails />
-            </AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/watch-later"
-        element={
-          <ProtectedRoute>
-            <AppLayout>
-              <WatchLater />
-            </AppLayout>
-          </ProtectedRoute>
-        }
-      />
+          {/* Public route — anyone can visit login page */}
+          <Route path="/login" element={<SignIn />} />
 
-      <Route path="/not-found" element={<NotFound />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+          {/* Private routes — only visible when logged in */}
+          <Route element={<PrivateLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/movies/:id" element={<MovieDetails />} />
+            <Route path="/watch-later" element={<WatchLater />} />
+          </Route>
+
+          {/* Not Found pages — no header shown */}
+          <Route path="/not-found" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
+
+        </Routes>
+      </BrowserRouter>
+    </WatchLaterProvider>
   );
 }
 
